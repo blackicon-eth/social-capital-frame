@@ -54,7 +54,7 @@ function getErrorFrame(context: FrameContext<Env, "/", BlankInput>): TypedRespon
   });
 }
 
-// Returns a frame with the top farcaster users image test
+// Returns a frame with the top farcaster users image
 function getTopUsersPodiumFrame(
   topThreeUsers: interfaces.TopThreeUser[],
   context: FrameContext<Env, "/", BlankInput>
@@ -68,11 +68,11 @@ function getTopUsersPodiumFrame(
           height: "100%",
           width: "100%",
           justifyContent: "center",
+          paddingTop: "35px",
           fontSize: 55,
           letterSpacing: -1,
           fontWeight: 1000,
           backgroundImage: `url("${process.env.NEXT_PUBLIC_BASE_URL}/frames/top_three_casters.png")`,
-          gap: "100",
         }}
       >
         <div
@@ -80,8 +80,8 @@ function getTopUsersPodiumFrame(
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            flexDirection: "row",
-            gap: 20,
+            flexDirection: "column",
+            gap: 50,
           }}
         >
           <img
@@ -101,56 +101,42 @@ function getTopUsersPodiumFrame(
               gap: "10",
             }}
           >
-            <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>dwr</div>
-            <div style={{ display: "flex", flexDirection: "row", fontWeight: 100 }}>
+            <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>{topThreeUsers[0].fnames[0]}</div>
+            {/* <div style={{ display: "flex", flexDirection: "row", fontWeight: 100 }}>
               score:
               <div style={{ color: "green", paddingLeft: "20px" }}>120400</div>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center", gap: "340px" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "400px" }}>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "row",
-              gap: 20,
+              flexDirection: "column",
+              gap: 50,
             }}
           >
+            <img
+              style={{
+                height: "200",
+                width: "200",
+                borderRadius: "100%",
+              }}
+              src={topThreeUsers[1].profileImage}
+            />
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                flexDirection: "row",
-                gap: 20,
+                flexDirection: "column",
+                gap: "10",
               }}
             >
-              <img
-                style={{
-                  height: "200",
-                  width: "200",
-                  borderRadius: "100%",
-                }}
-                src={topThreeUsers[1].profileImage}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  gap: "10",
-                }}
-              >
-                <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>jacob</div>
-                <div style={{ display: "flex", flexDirection: "row", fontWeight: 100 }}>
-                  score:
-                  <div style={{ color: "green", paddingLeft: "20px" }}>120400</div>
-                </div>
-              </div>
+              <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>{topThreeUsers[1].fnames[0]}</div>
             </div>
           </div>
 
@@ -159,38 +145,59 @@ function getTopUsersPodiumFrame(
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "row",
-              gap: 20,
+              flexDirection: "column",
+              gap: 50,
             }}
           >
+            <img
+              style={{
+                height: "200",
+                width: "200",
+                borderRadius: "100%",
+              }}
+              src={topThreeUsers[2].profileImage}
+            />
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                flexDirection: "row",
-                gap: 20,
+                flexDirection: "column",
+                gap: "10",
               }}
             >
-              <img
-                style={{
-                  height: "200",
-                  width: "200",
-                  borderRadius: "100%",
-                }}
-                src={topThreeUsers[2].profileImage}
-              />
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  flexDirection: "column",
-                  gap: "10",
+                  flexDirection: "row",
+                  gap: "50",
+                  marginBottom: "23",
                 }}
               >
-                <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>jesse</div>
-              </div>
+                <img
+                  style={{
+                    height: "100",
+                    width: "100",
+                    marginTop: -100,
+                  }}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/bronze_medal.png`}
+                />
+                {topThreeUsers[2].isFarcasterPowerUser ? (
+                  <img
+                    style={{
+                      height: "60",
+                      width: "60",
+                      marginTop: -120,
+                    }}
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/powerbadge.png`}
+                  />
+                ) : (
+                  ""
+                )}
+              </div> */}
+              <div tw={"flex rounded-3xl bg-white px-8 mt-4"}>{topThreeUsers[2].fnames[0]}</div>
             </div>
           </div>
         </div>
