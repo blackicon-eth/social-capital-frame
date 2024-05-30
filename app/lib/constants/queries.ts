@@ -1,17 +1,17 @@
-export const getYourRankQuery = `query GetYourRank($id: Identity) {
-    Socials(
-      input: {filter: {dappName: {_eq: farcaster}, identity: {_eq: $id}}, blockchain: ethereum}
-    ) {
-      Social {
-        fnames
-        isFarcasterPowerUser
-        profileImage
-        socialCapital {
-          socialCapitalRank
-        }
+export const getYourRankQuery = `query GetYourRank($id: String) {
+  Socials(
+    input: {filter: {dappName: {_eq: farcaster}, userId: {_eq: $id}}, blockchain: ethereum}
+  ) {
+    Social {
+      fnames
+      isFarcasterPowerUser
+      profileImage
+      socialCapital {
+        socialCapitalRank
       }
     }
-  }`;
+  }
+}`;
 
 export const getTopThreeCastersQuery = `query GetTopThreeCastersByFollowers {
     Socials(
@@ -45,6 +45,7 @@ export const getTodaysTrendingCastsQuery = `query GetTodaysTrendingCasts {
         cast {
             castedBy {
             fnames
+            profileImage
             }
             url
         }
