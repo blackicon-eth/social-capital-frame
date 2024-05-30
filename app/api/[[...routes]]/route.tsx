@@ -114,14 +114,14 @@ function getTopUsersPodiumFrame(
             }}
           >
             <div tw={"flex flex-row rounded-3xl bg-white px-8 mt-4"}>
-              {/* <img
+              <img
                 style={{
                   height: "100",
                   width: "100",
                   marginTop: -100,
                 }}
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/gold_medal.png`}
-              /> */}
+              />
               {topThreeUsers[0].fnames[0]}
             </div>
             {/* <div style={{ display: "flex", flexDirection: "row", fontWeight: 100 }}>
@@ -159,14 +159,14 @@ function getTopUsersPodiumFrame(
               }}
             >
               <div tw={"flex flex-row rounded-3xl bg-white px-8 mt-4"}>
-                {/* <img
+                <img
                   style={{
                     height: "100",
                     width: "100",
                     marginTop: -100,
                   }}
                   src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/silver_medal.png`}
-                /> */}
+                />
                 {topThreeUsers[1].fnames[0]}
               </div>
             </div>
@@ -230,14 +230,14 @@ function getTopUsersPodiumFrame(
                 )}
               </div> */}
               <div tw={"flex flex-row rounded-3xl bg-white px-8 mt-4"}>
-                {/* <img
+                <img
                   style={{
                     height: "100",
                     width: "100",
                     marginTop: -100,
                   }}
                   src={`${process.env.NEXT_PUBLIC_BASE_URL}/icons/bronze_medal.png`}
-                /> */}
+                />
                 {topThreeUsers[2].fnames[0]}
               </div>
             </div>
