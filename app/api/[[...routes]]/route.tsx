@@ -645,7 +645,7 @@ app.frame("/worker", async (context) => {
   const { fid } = frameData!;
 
   // Validating the frame message
-  //if (!verified) return getInvalidFrame(context);
+  if (!verified) return getInvalidFrame(context);
 
   if (buttonValue === "top-users") {
     const { data, error } = await fetchQuery(queries.getTopThreeCastersQuery);
@@ -691,7 +691,7 @@ app.frame("/top-users-followers", async (context) => {
   const { verified, inputText } = context;
 
   // Validating the frame message
-  //if (!verified) return getInvalidFrame(context);
+  if (!verified) return getInvalidFrame(context);
 
   try {
     if (!inputText || !Number.isInteger(parseInt(inputText) || Number.isInteger(parseInt(inputText) < 0))) {
