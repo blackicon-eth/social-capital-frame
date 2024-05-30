@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "scr-podium-frame",
-  description: "A Farcaster frame that shows data related to the Farcaster Social Capital Rank",
+  title: "social-capital-frame",
+  description: "A Farcaster frame that shows data related to the Farcaster Social Capital",
 };
 
 export default function RootLayout({

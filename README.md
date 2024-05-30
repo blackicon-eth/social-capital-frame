@@ -1,6 +1,6 @@
-# Social Capital Rank Podium Frame
+# Social Capital Frame
 
-A Farcaster frame that shows data related to the Farcaster Social Capital Rank
+A Farcaster frame that shows data related to the Farcaster Social Capital
 
 # Frame routes
 
