@@ -308,7 +308,7 @@ function getTopCastsPodiumFrame(
           />
           {topThreeCasts[0].cast.castedBy.fnames[0]}
           {" in /"}
-          {topThreeCasts[0].channel.name}
+          {topThreeCasts[0].channel ? topThreeCasts[0].channel.name : ""}
         </div>
 
         <div
@@ -340,7 +340,7 @@ function getTopCastsPodiumFrame(
           />
           {topThreeCasts[1].cast.castedBy.fnames[0]}
           {" in /"}
-          {topThreeCasts[1].channel.name}
+          {topThreeCasts[1].channel ? topThreeCasts[1].channel.name : ""}
         </div>
 
         <div
@@ -372,7 +372,7 @@ function getTopCastsPodiumFrame(
           />
           {topThreeCasts[2].cast.castedBy.fnames[0]}
           {" in /"}
-          {topThreeCasts[2].channel.name}
+          {topThreeCasts[2].channel ? topThreeCasts[2].channel.name : ""}
         </div>
       </div>
     ),
@@ -645,7 +645,7 @@ app.frame("/worker", async (context) => {
   const { fid } = frameData!;
 
   // Validating the frame message
-  if (!verified) return getInvalidFrame(context);
+  //if (!verified) return getInvalidFrame(context);
 
   if (buttonValue === "top-users") {
     const { data, error } = await fetchQuery(queries.getTopThreeCastersQuery);
@@ -667,7 +667,7 @@ app.frame("/worker", async (context) => {
     return context.res({
       image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/whole_number_instructions.png`,
       intents: [
-        <TextInput placeholder="followers number" />,
+        <TextInput placeholder="Followers number" />,
         <Button action="/top-users-followers">Find them!</Button>,
         <Button action="/">Start over</Button>,
       ],
@@ -691,7 +691,7 @@ app.frame("/top-users-followers", async (context) => {
   const { verified, inputText } = context;
 
   // Validating the frame message
-  if (!verified) return getInvalidFrame(context);
+  //if (!verified) return getInvalidFrame(context);
 
   try {
     if (!inputText || !Number.isInteger(parseInt(inputText) || Number.isInteger(parseInt(inputText) < 0))) {
