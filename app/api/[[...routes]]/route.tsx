@@ -39,7 +39,7 @@ const app = new Frog({
 // So here it is a "library" of functions that return frames
 
 // Returns an invalid frame
-export function getInvalidFrame(context: FrameContext<Env, "/", BlankInput>): TypedResponse<FrameResponse> {
+function getInvalidFrame(context: FrameContext<Env, "/", BlankInput>): TypedResponse<FrameResponse> {
   return context.res({
     image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/invalid.png`,
     intents: [<Button action="/">Start over</Button>],
@@ -47,7 +47,7 @@ export function getInvalidFrame(context: FrameContext<Env, "/", BlankInput>): Ty
 }
 
 // Returns an error frame
-export function getErrorFrame(context: FrameContext<Env, "/", BlankInput>): TypedResponse<FrameResponse> {
+function getErrorFrame(context: FrameContext<Env, "/", BlankInput>): TypedResponse<FrameResponse> {
   return context.res({
     image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/error.png`,
     intents: [<Button action="/">Start over</Button>],
@@ -55,7 +55,7 @@ export function getErrorFrame(context: FrameContext<Env, "/", BlankInput>): Type
 }
 
 // Returns a frame with the top farcaster users image
-export function getTopUsersPodiumFrame(
+function getTopUsersPodiumFrame(
   topThreeUsers: interfaces.TopThreeUser[],
   context: FrameContext<Env, "/", BlankInput>
 ): TypedResponse<FrameResponse> {
@@ -206,7 +206,7 @@ export function getTopUsersPodiumFrame(
 }
 
 // Returns a frame with the top casts of today image
-export function getTopCastsPodiumFrame(
+function getTopCastsPodiumFrame(
   topThree: string,
   context: FrameContext<Env, "/", BlankInput>
 ): TypedResponse<FrameResponse> {
@@ -227,10 +227,7 @@ export function getTopCastsPodiumFrame(
 }
 
 // Returns a frame with the top farcaster users image
-export function getPersonalScoreFrame(
-  topThree: string,
-  context: FrameContext<Env, "/", BlankInput>
-): TypedResponse<FrameResponse> {
+function getPersonalScoreFrame(topThree: string, context: FrameContext<Env, "/", BlankInput>): TypedResponse<FrameResponse> {
   const text = "personal score";
   return context.res({
     image: (
