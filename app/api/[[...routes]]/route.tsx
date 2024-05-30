@@ -54,7 +54,7 @@ function getErrorFrame(context: FrameContext<Env, "/", BlankInput>): TypedRespon
   });
 }
 
-// Returns a frame with the top farcaster users image
+// Returns a frame with the top farcaster users image test
 function getTopUsersPodiumFrame(
   topThreeUsers: interfaces.TopThreeUser[],
   context: FrameContext<Env, "/", BlankInput>
