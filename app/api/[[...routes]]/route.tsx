@@ -631,8 +631,8 @@ app.frame("/", (context) => {
     image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/front.png`,
     intents: [
       <Button value="top-users">{"Top users"}</Button>,
-      <Button value="top-casts">{"Today's top casts"}</Button>,
-      <Button value="top-users-followers">{"Search by followers"}</Button>,
+      <Button value="top-casts">{"Trending casts"}</Button>,
+      <Button value="top-users-followers">{"By followers"}</Button>,
       <Button value="personal-score">{"Your rank"}</Button>,
     ],
     action: "/worker",

@@ -13,16 +13,19 @@ export const getYourRankQuery = `query GetYourRank($id: String) {
   }
 }`;
 
-export const getTopThreeCastersQuery = `query GetTopThreeCastersByFollowers {
-    Socials(
-      input: {filter: {dappName: {_eq: farcaster}}, blockchain: ethereum, order: {socialCapitalRank: ASC}, limit: 3}
-    ) {
-      Social {
-        fnames
-        isFarcasterPowerUser
-        profileImage
+export const getTopThreeCastersQuery = `query GetTopThreeCasters {
+  Socials(
+    input: {filter: {dappName: {_eq: farcaster}}, blockchain: ethereum, order: {socialCapitalRank: ASC}, limit: 3}
+  ) {
+    Social {
+      fnames
+      isFarcasterPowerUser
+      profileImage
+      socialCapital{
+        socialCapitalRank
       }
     }
+  }
 }`;
 
 export const getTopThreeCastersByFollowersQuery = `query GetTopThreeCastersByFollowers($amount: Int) {
