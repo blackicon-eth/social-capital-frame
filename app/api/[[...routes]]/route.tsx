@@ -630,10 +630,10 @@ app.frame("/", (context) => {
   return context.res({
     image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/front.png`,
     intents: [
-      <Button value="top-users">{"Top users"}</Button>,
-      <Button value="top-casts">{"Trending casts"}</Button>,
-      <Button value="top-users-followers">{"By followers"}</Button>,
-      <Button value="personal-score">{"Your rank"}</Button>,
+      <Button>{"Top users"}</Button>,
+      <Button>{"Trending casts"}</Button>,
+      <Button>{"By followers"}</Button>,
+      <Button>{"Your rank"}</Button>,
     ],
     action: "/worker",
   });
@@ -641,13 +641,16 @@ app.frame("/", (context) => {
 
 // Working the user request
 app.frame("/worker", async (context) => {
-  const { verified, buttonValue, frameData } = context;
+  const { verified, frameData, buttonIndex } = context;
   const { fid } = frameData!;
+
+  console.log("buttonIndex: ", buttonIndex);
 
   // Validating the frame message
   if (!verified) return getInvalidFrame(context);
 
-  if (buttonValue === "top-users") {
+  // Getting the top 3 users
+  if (buttonIndex === 1) {
     const { data, error } = await fetchQuery(queries.getTopThreeCastersQuery);
 
     if (error) {
@@ -655,7 +658,10 @@ app.frame("/worker", async (context) => {
     }
 
     return getTopUsersPodiumFrame(data.Socials.Social, context);
-  } else if (buttonValue === "top-casts") {
+  }
+
+  // Getting the top 3 casts
+  else if (buttonIndex === 2) {
     const { data, error } = await fetchQuery(queries.getTodaysTrendingCastsQuery);
 
     if (error) {
@@ -663,7 +669,10 @@ app.frame("/worker", async (context) => {
     }
 
     return getTopCastsPodiumFrame(data.TrendingCasts.TrendingCast, context);
-  } else if (buttonValue === "top-users-followers") {
+  }
+
+  // Getting the top 3 users with less than x followers
+  else if (buttonIndex === 3) {
     return context.res({
       image: `${process.env.NEXT_PUBLIC_BASE_URL}/frames/whole_number_instructions.png`,
       intents: [
@@ -672,7 +681,10 @@ app.frame("/worker", async (context) => {
         <Button action="/">Start over</Button>,
       ],
     });
-  } else if (buttonValue === "personal-score") {
+  }
+
+  // Getting the user's rank
+  else if (buttonIndex === 4) {
     console.log(fid);
     const { data, error } = await fetchQuery(queries.getYourRankQuery, { id: fid.toString() });
 
@@ -681,7 +693,11 @@ app.frame("/worker", async (context) => {
     }
 
     return getPersonalScoreFrame(data.Socials.Social, context);
-  } else {
+  }
+
+  // Invalid button index
+  else {
+    console.log("invalid button value");
     return getErrorFrame(context);
   }
 });
